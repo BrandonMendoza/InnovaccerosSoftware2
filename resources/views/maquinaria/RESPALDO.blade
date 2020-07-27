@@ -1,0 +1,103 @@
+@foreach($maquinarias as $id =>$maquinaria)
+              <tr>
+                <td>{{ ($id+1) }}</td>
+                <td><img src="{{ asset('uploads/maquinaria/'.$maquinaria->foto) }}" alt="" style="height: 50px; width: 50px;"></td>
+                <td>{{ $maquinaria->clave }}</td>
+                <td>{{ $maquinaria->categoria }}</td>
+                <td>{{ $maquinaria->tipo }}</td>
+                <td>{{ $maquinaria->marca }}</td>
+                <td>{{ $maquinaria->modelo }}</td>
+                <td>{{ $maquinaria->fecha }}</td>
+                <td>{{ $maquinaria->color }}</td>
+                <td>{{ $maquinaria->ultimo_serv }}</td>
+                <td>{{ $maquinaria->dias_sin_serv }}</td>
+                <td></td>
+                <td>
+                  <a href="{{URL('maquinaria/'.$maquinaria->id.'/eliminar')}}" class="btn btn-xs btn-danger">Eliminar</a>
+                </td>
+                <td>
+                  <a href="{{URL('maquinaria/'.$maquinaria->id.'/editar')}}" class="btn btn-xs btn-info">Editar</a>
+                </td>
+
+              </tr>
+
+    @endforeach
+
+
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Foto</th>
+      <th scope="col">Clave</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Fecha de registro</th>
+      <th scope="col">Color</th>
+      <th scope="col">Ultimo Servicio</th>
+      <th scope="col">Dias sin servicio</th>
+      <th scope="col">Estado</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+
+  
+    @foreach($maquinarias as $id =>$maquinaria)
+      {{$loop->iteration}}
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{{ asset('uploads/maquinaria/'.$maquinaria->foto) }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ $maquinaria->marca.' '.$maquinaria->modelo}}</h5>
+            <p class="card-text">Clave: {{ $maquinaria->clave }}</p>
+            <p class="card-text">Tipo: {{ $maquinaria->tipo }}</p>
+            <p class="card-text">Dias sin servicio:{{ $maquinaria->dias_sin_serv }}</p>
+            <p class="card-text">Ultimo servicio en:{{ $maquinaria->ultimo_serv }}</p>
+            <a href="{{URL('maquinaria/'.$maquinaria->id.'/eliminar')}}" class="btn btn-xs btn-danger">Eliminar</a>
+            <a href="{{URL('maquinaria/'.$maquinaria->id.'/editar')}}" class="btn btn-xs btn-info">Editar</a>
+          </div>
+        </div>
+    @endforeach
+
+
+
+    
+    $(document).on('change','#categoriasFiltro', function () {
+      $("#body").empty();
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+      var categoria=$(this).val();
+       //console.log(race_id);
+      var div = $(this).parent();
+       //console.log(div);
+      var op=" ";
+      $.ajax({
+        type:'get',
+        url:'{!! URL::to('categoriasFilter') !!}',
+        data:{'cat':categoria},
+        success:function(data) {
+          /*console.log(data);
+          //op+='hola';
+          //op+='<option class="form-control" value="'+data[i].id+'">'+data[i].name+'</option>';
+          var x =  "asset('uploads/maquinaria/"+data[1].foto+"')";
+          var src = "{"+"{"+x+"}"+"}";
+
+          console.log(src);
+          op+='<div class="col-3"><div class="card" style="width: 18rem;"><img class="card-img-top" src="'+src+'" alt="Card image cap" style="width: 100%; height: 200px;"><div class="card-body">';            
+          
+
+          $("#body").append(op);*/
+          
+        },
+        error:function() {
+
+        }
+      });
+
+    });
