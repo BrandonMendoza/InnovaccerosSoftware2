@@ -22,6 +22,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 
+	//TIPOS_MATERIALES
+	Route::get('/materialesTipos/show','materialesTiposController@show')->name('mattiposshow');
+	Route::get('/materialesTipos/{id}/Form/','materialesTiposController@Form');
+	Route::post('/materialesTipos/insert/','materialesTiposController@insertForm')->name('mattiposinsertForm');
+	//ACEROS
+	Route::get('/materialesAceros/show','materialesAcerosController@show')->name('matacerosshow');
+	Route::get('/materialesAceros/{id}/Form/','materialesAcerosController@Form');
+	Route::post('/materialesAceros/insert/','materialesAcerosController@insertForm')->name('matacerosinsertForm');
+
 	//ORDENES DE COMPRA
 	Route::get('/ordenCompra/crear','ordenesCompraController@crear')->name('ordenCompraCrear');
 	Route::get('/ordenesCompra/show','ordenesCompraController@show')->name('ordshow');
