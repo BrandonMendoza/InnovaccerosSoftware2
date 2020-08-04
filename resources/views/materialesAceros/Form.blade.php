@@ -36,14 +36,16 @@
              		 </div>
             	</div>
 	            <div class="card-body" style="display: block;">
-	            	<input type="text" name="id" value="{{ isset($acero->id)??$acero->id ?? 0}}" hidden>
+
+	            	  <input type="text" name="id" id="id" value="{{  old('id') ?? $acero->id ?? 0}}" hidden>
 	              	<div class="form-group">
 	                	<label for="nombre">Nombre del Acero</label>
-	                	<input type="text" id="nombre" class="form-control" name="nombre" {{ old('nombre') ?? $acero->nombre ?? null }} >
+	                	<input type="text" id="nombre" class="form-control" name="nombre" 
+                        value="{{ old('nombre') ?? $acero->nombre ?? null }}" >
 	              	</div>
 	              	<div class="form-group">
-	    			    <label for="simbolo">Simbolo </label>
-						<input id="simbolo" name="simbolo" class="form-control" type="text" {{ old('simbolo') ?? $acero->simbolo ?? null }}>
+  	    			    <label for="simbolo">Simbolo </label>
+  						    <input id="simbolo" name="simbolo" class="form-control" type="text" value="{{ old('simbolo') ?? $acero->simbolo ?? null }}">
 		            </div>
 	            </div>
             <!-- /.card-body -->
@@ -52,11 +54,11 @@
     </div>
   	<div class="row">
     	<div class="col-6">
-			<a class="ion-close-round btn btn-flat btn-danger" href="{{route('clishow')}}">
+			<a class="ion-close-round btn btn-flat btn-danger" href="{{route('matacerosshow')}}">
       			<i class="fas fa-window-close mr-2"></i>Cancelar
     		</a>
 	    	<button type="submit" class="btn btn-flat btn-success float-right" data-toggle="modal" data-target="#exampleModal">
-      			<i class="fas fa-check-square mr-2"></i>{{ $pagina }}
+      			<i class="fas fa-check-square mr-2"></i> @if($pagina ='Editar') Guardar @else Agregar @endif
     		</button>
         </div>
 	</div>
@@ -64,7 +66,7 @@
 
 
 	
-@endsection
+@stop
 
 @section('scripts')
 <script>
@@ -94,4 +96,4 @@
       }
   });
 </script>
-@endsection
+@stop

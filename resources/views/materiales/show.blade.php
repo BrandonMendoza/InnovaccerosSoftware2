@@ -27,13 +27,22 @@
           </div>
 
           <div class="card-tools">
+            <a href="{{route('accesoriosshow')}}" class="btn btn-flat btn-default">
+              Accesorios
+            </a>
+            <a href="{{route('invmaterialesshow')}}" class="btn btn-flat btn-default">
+              Inventario de Materiales
+            </a>
+            <a href="{{route('matclientesshow')}}" class="btn btn-flat btn-default">
+              Materiales de Clientes
+            </a>
             <a href="{{route('mattiposshow')}}" class="btn btn-flat btn-default">
               Tipos de Materiales
             </a>
             <a href="{{route('matacerosshow')}}" class="btn btn-flat btn-default">
               Tipos de Aceros
             </a>
-            <a href="{{route('matCrear')}}" class="btn btn-flat btn-default"><i class="fas fa-plus mr-2"></i>
+            <a href="/material/0/Form/" class="btn btn-flat btn-default"><i class="fas fa-plus mr-2"></i>
               Agregar
             </a>
           </div>
@@ -46,9 +55,10 @@
               <tr>
                 <th>#</th>
                 <th>Numero de parte</th>
+                <th>Medidas</th>
                 <th>Tipo</th>
                 <th>Acero</th>
-                <th>Medidas</th>
+                
                 <th>Peso(kg)</th>
                 <th data-orderable="false"></th>
               </tr>
@@ -62,13 +72,16 @@
                   <td>
                     {{ $material->numero_parte }}
                   </td>
-                  <td>{{ $material->tipo_material_id }}</td>
-                  <td>{{ $material->acero_id }}</td>
-                  <td>{{ $material->longitud.'x'.$material->anchura.'x'.$material->espesor }}</td>
-                  <td>{{ $material->peso_kg }}</td>
                   <td>
+                    {{ $material->medida_1.'x'.$material->medida_2 }}{{ $material->medida_3 ? 'x'.$material->medida_3 : '' }}{{ $material->medida_4 ? 'x'.$material->medida_4 : '' }}
+                  </td>
+                  <td>{{ $material->Tipo_material->nombre }}</td>
+                  <td>{{ $material->Acero->nombre }}</td>
+                  
+                  <td>{{ $material->peso_kg }}</td>
+                  <td style="text-align: right;">
                     <div class="btn-group">
-                      <a class="btn btn-flat btn-info" href="{{ url('/material/'.$material->id.'/editar') }}" style="text-decoration:none;"><i class="far fa-eye"></i>
+                      <a class="btn btn-flat btn-info" href="{{ '/material/'.$material->id.'/Form/' }}" style="text-decoration:none;"><i class="far fa-edit"></i>
                       </a>
                       <a class="btn btn-flat btn-danger" href="" style="text-decoration:none;"><i class="fas fa-trash-alt"></i>
                       </a>

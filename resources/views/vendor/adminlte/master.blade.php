@@ -37,6 +37,12 @@
         <link rel="stylesheet" href="{{ asset('vendor/jquery/datatables/dataTables.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/jquery/datatables/dataTables.bootstrap4.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/jquery/datatables/select/select.bootstrap4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/jquery/datatables/Responsive/css/responsive.bootstrap4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/pace/css/pace-theme.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/toastr/css/toastr.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/generalStyles.css') }}">
+        
+        
 
         
     @else
@@ -72,7 +78,12 @@
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
-
+    <div class="pace pace-inactive">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div>
     {{-- Body Content --}}
     @yield('body')
 
@@ -85,7 +96,12 @@
         <script src="{{ asset('vendor/jquery/datatables/dataTables.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('vendor/jquery/datatables/datatables.min.js') }}"></script>
         <script src="{{ asset('vendor/jquery/datatables/select/select.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('vendor/jquery/datatables/Responsive/js/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('vendor/jquery/datatables/Responsive/js/responsive.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+        <script src="{{ asset('vendor/pace/js/pace.min.js') }}"></script>
+        <script src="{{ asset('vendor/toastr/js/toastr.min.js')}}"></script>
+        <script src="{{ asset('vendor/generalScripts.js')}}"></script>
         
 
         {{-- Configured Scripts --}}

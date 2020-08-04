@@ -22,23 +22,34 @@ class materialesAcerosController extends Controller
     	return view('materialesAceros.Form')->with(['pagina'=>$pagina]);
     }
 
-    public function insertForm(Request $request){
-    	$acero = [
+     public function delete(Request $request){
+        $materialAcero = MaterialAcero::find($request->id);
+        $materialAcero->delete();
+
+        //consultamos todos los materialesClientes
+        $materialesAceros = MaterialAcero::get();
+        return response()->json($materialesAceros); //Fin
+    }
+
+    public function insert(Request $request)
+    {
+        $materialAcero = [
             'nombre' => $request->nombre,
             'simbolo' => $request->simbolo,
         ];
-        if($request->id != 0){
-        	$acero += ['id' => $request->id,];
-        	$save = MaterialAcero::find($request->id)->update($acero);
-
-        	$data['materialesAceros'] = MaterialAcero::All();
-            return redirect('/materialesAceros/show')->with($data);
-        }
-
-        $save = MaterialAcero::create($acero);
-    	
-    	$data['materialesAceros'] = MaterialAcero::All();
-		return redirect('/materialesAceros/show')->with($data);
         
+        //Si es editar
+        if($request->id != 0){
+            $materialAcero += ['id' => $request->id];
+            $save = MaterialAcero::find($request->id)->update($materialAcero);
+            //Fin
+        }else{
+            //Si es Agregar
+            $save = MaterialAcero::create($materialAcero);    
+        }
+        //consultamos todos los materialesClientes
+        $materialesAceros = MaterialAcero::get();
+        return response()->json($materialesAceros); //Fin
     }
+
 }

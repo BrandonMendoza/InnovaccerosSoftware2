@@ -12,6 +12,15 @@ class materialesTiposController extends Controller
 		return view('materialesTipos.show')->with($data);
 	}
 
+    public function delete(Request $request){
+        $materialTipo = MaterialTipo::find($request->id);
+        $materialTipo->delete();
+
+        //consultamos todos los materialesClientes
+        $materialesTipos = MaterialTipo::get();
+        return response()->json($materialesTipos); //Fin
+    }
+    
 	public function Form($id = 0){
         $pagina = 'Agregar';
 		if($id != 0){
@@ -22,23 +31,25 @@ class materialesTiposController extends Controller
     	return view('materialesTipos.Form')->with(['pagina'=>$pagina]);
     }
 
-    public function insertForm(Request $request){
-    	$tipo = [
+    public function insert(Request $request)
+    {
+        $materialTipo = [
             'nombre' => $request->nombre,
             'simbolo' => $request->simbolo,
             'cantidad_datos' => $request->cantidad_datos,
         ];
-
+        
+        //Si es editar
         if($request->id != 0){
-
-        	$tipo += ['id' => $request->id,];
-        	$save = MaterialTipo::find($request->id)->update($tipo);
-        	$data['materialesTipos'] = MaterialTipo::All();
-			return redirect('/materialesTipos/show')->with($data);
+            $materialTipo += ['id' => $request->id];
+            $save = MaterialTipo::find($request->id)->update($materialTipo);
+            //Fin
+        }else{
+            //Si es Agregar
+            $save = MaterialTipo::create($materialTipo);    
         }
-
-        $save = MaterialTipo::create($tipo);
-    	$data['materialesTipos'] = MaterialTipo::All();
-		return redirect('/materialesTipos/show')->with($data);
+        //consultamos todos los materialesClientes
+        $materialesTipos = MaterialTipo::get();
+        return response()->json($materialesTipos); //Fin
     }
 }
