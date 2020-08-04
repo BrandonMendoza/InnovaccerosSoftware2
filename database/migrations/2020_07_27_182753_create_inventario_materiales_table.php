@@ -16,9 +16,9 @@ class CreateInventarioMaterialesTable extends Migration
         Schema::create('inventario_materiales', function (Blueprint $table) {
             $table->id()->unsigned(false);
             $table->integer('material_cliente_id');
-            $table->integer('proyecto_id');
             $table->integer('status_id');
             $table->integer('orden_compra_id');
+            $table->string('proyecto',50)->nullable();
             $table->string('tba',50);
             $table->integer('cantidad');
             $table->integer('item');
@@ -30,7 +30,6 @@ class CreateInventarioMaterialesTable extends Migration
             $table->timestamps();
 
             $table->foreign('material_cliente_id')->references('id')->on('material_cliente');
-            $table->foreign('proyecto_id')->references('id')->on('trabajos');
             $table->foreign('status_id')->references('id')->on('status_inventario_materiales');
         });
     }

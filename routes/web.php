@@ -22,14 +22,44 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 
+	//ACCESORIOS
+	Route::get('/accesorios/show','accesoriosController@show')->name('accesoriosshow');
+	Route::post('/accesorios/insert/','accesoriosController@insertForm');
+	Route::post('/accesorios/delete','accesoriosController@delete');
+
+	//INVENTARIOS_MATERIALES
+	Route::get('/inventariosMateriales/show','inventariosMaterialesController@show')->name('invmaterialesshow');
+	Route::post('/inventariosMateriales/insert/','inventariosMaterialesController@insertForm');
+	Route::post('/inventariosMateriales/delete','inventariosMaterialesController@delete');
+	Route::post('/inventariosMateriales/editando/','inventariosMaterialesController@editing');
+
+	//MATERIALES_CLIENTES
+	Route::get('/materialesClientes/show','materialesClientesController@show')->name('matclientesshow');
+	Route::post('/materialesClientes/insert/','materialesClientesController@insertForm');
+	Route::post('/materialesClientes/delete','materialesClientesController@delete');
+	Route::post('/materialesClientes/getMaterialesClientes','materialesClientesController@getMaterialesClientes');
+	Route::post('/materialesClientes/getMaterialesAccesoriosClientes','materialesClientesController@getMaterialesAccesoriosClientes');
+	Route::post('/materialesClientes/getMaterialesClientesByCatalogoCliente','materialesClientesController@getMaterialesClientesByCatalogoCliente');
+
+	//TIPOS_MATERIALES
+	Route::get('/materialesTipos/show','materialesTiposController@show')->name('mattiposshow');
+	Route::get('/materialesTipos/{id}/Form/','materialesTiposController@Form');
+	Route::post('/materialesTipos/insert/','materialesTiposController@insert')->name('mattiposinsertForm');
+	Route::post('/materialesTipos/delete','materialesTiposController@delete');
+	//ACEROS
+	Route::get('/materialesAceros/show','materialesAcerosController@show')->name('matacerosshow');
+	Route::get('/materialesAceros/{id}/Form/','materialesAcerosController@Form');
+	Route::post('/materialesAceros/insert/','materialesAcerosController@insert')->name('matacerosinsertForm');
+	Route::post('/materialesAceros/delete','materialesAcerosController@delete')->name('matacerosinsertForm');
+
 	//ORDENES DE COMPRA
 	Route::get('/ordenCompra/crear','ordenesCompraController@crear')->name('ordenCompraCrear');
 	Route::get('/ordenesCompra/show','ordenesCompraController@show')->name('ordshow');
 	Route::post('/ordenCompra/insertar','ordenesCompraController@insertar');
 	//MATERIALES
 	Route::get('/materiales/show','materialesController@show')->name('matshow');
-	Route::get('/material/crear/','materialesController@crear')->name('matCrear');
-	Route::post('/material/insertar/','materialesController@insertar')->name('insertarMaterial');
+	Route::get('/material/{id}/Form/','materialesController@Form');
+	Route::post('/material/insert/','materialesController@insertForm');
 	Route::get('/material/{id}/editar','materialesController@editar');
 	Route::post('/material/actualizar','materialesController@actualizar');
 
