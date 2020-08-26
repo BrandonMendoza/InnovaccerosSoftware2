@@ -20,6 +20,10 @@ class Material extends Model
         return $this->hasOne('App\MaterialTipo','id','tipo_material_id');
     }
 
+    public function Productos(){
+        return $this->belongsToMany('App\Producto', 'Productos_materiales', 'material_id','producto_id')->withPivot('cantidad');
+    }
+
     public function getNombreMaterial()
     {
         $nombreMedidas = $this->Tipo_material->simbolo.'-';
@@ -32,5 +36,7 @@ class Material extends Model
         }
         return $nombreMedidas;
     }
+
+
     
 }

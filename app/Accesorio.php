@@ -14,4 +14,8 @@ class Accesorio extends Model
     {
         return $this->hasOne('App\MaterialAcero','id','acero_id');
     }
+
+    public function Productos(){
+        return $this->belongsToMany('App\Producto', 'Productos_accesorios', 'accesorio_id','producto_id')->withPivot('cantidad');
+    }
 }

@@ -50,7 +50,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive">
-          <table id="tablaPrincipal" class="table table-hover text-nowrap table-striped projects">
+          <table id="tablaPrincipal" class="table table-hover text-nowrap">
             <thead>
               <tr>
                 <th>#</th>

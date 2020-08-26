@@ -51,5 +51,4 @@ class materialesAcerosController extends Controller
         $materialesAceros = MaterialAcero::get();
         return response()->json($materialesAceros); //Fin
     }
-
 }

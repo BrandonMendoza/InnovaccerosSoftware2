@@ -40,7 +40,16 @@
         <link rel="stylesheet" href="{{ asset('vendor/jquery/datatables/Responsive/css/responsive.bootstrap4.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/pace/css/pace-theme.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/toastr/css/toastr.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-bootstrap4.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/jquery/datatables/RowReorder/css/rowReorder.dataTables.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/jquery/datatables/RowReorder/css/rowReorder.bootstrap4.min.css') }}">
+        
+
+        {{-- General custom Styles --}}
         <link rel="stylesheet" href="{{ asset('vendor/generalStyles.css') }}">
+
         
         
 
@@ -101,6 +110,16 @@
         <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
         <script src="{{ asset('vendor/pace/js/pace.min.js') }}"></script>
         <script src="{{ asset('vendor/toastr/js/toastr.min.js')}}"></script>
+        <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
+
+        
+
+        
+        
+        
+
+        {{-- General custom Scripts --}}
         <script src="{{ asset('vendor/generalScripts.js')}}"></script>
         
 
