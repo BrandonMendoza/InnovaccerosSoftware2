@@ -354,7 +354,7 @@
               "ordering": true,
               "serverSide": false,
               "info": true,
-              "autoWidth": false,
+              "autoWidth": true,
               "responsive": true,
               "language": {
                 "sProcessing":     "Procesando...",

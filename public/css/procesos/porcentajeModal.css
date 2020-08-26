@@ -1,0 +1,13 @@
+#sliders {
+    width: 300px;
+    padding: 20px;
+    list-style-type: none;
+}
+
+#sliders li {
+    margin-bottom: 10px;
+}
+
+#sliders div {
+    margin-bottom: 5px;
+}

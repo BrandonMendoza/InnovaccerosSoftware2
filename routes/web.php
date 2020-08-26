@@ -22,6 +22,39 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 
+	//PRODUCTOS
+	Route::get('/productos/show','productosController@show')->name('productosshow');
+	Route::post('/producto/insert', 'productosController@insert');
+	Route::post('/productos/cargarTablasForm', 'productosController@cargarTablasForm');
+	Route::post('/productos/cargarTablaDocumentosForm', 'productosController@cargarTablaDocumentosForm');
+	Route::post('/productos/delete','productosController@delete');
+	Route::post('/producto/insertDocumento','productosController@insertDocument');
+	Route::post('/productos/deleteProductoDocumento','productosController@deleteProductoDocumento');
+	Route::get('/productos/descargarProductoDocumento/{documento_id}','productosController@descargarProductoDocumento');
+
+	//PROCESOS
+	Route::get('/procesos/show','procesosController@show')->name('procesoshow');
+	Route::post('/proceso/insert','procesosController@insert');
+	Route::post('/proceso/delete','procesosController@delete');
+	Route::post('/procesos/order','procesosController@updateOrder');
+	Route::post('/procesos/activarDesactivar','procesosController@activarDesactivar');
+	Route::post('/procesos/cargarTablaOrdenModal','procesosController@cargarTablaOrdenModal');
+	Route::post('/procesos/cargarTablaProcesos','procesosController@cargarTablaProcesos');
+	Route::post('/procesos/guardarPorcentaje','procesosController@guardarPorcentajes');
+	Route::post('/procesos/cargarTablaPorcentajes','procesosController@cargarTablaPorcentajes');
+	//PROYECTOS
+	Route::get('/proyectos/show','proyectosController@show')->name('proyshow');
+	Route::post('/proyectos/insert','proyectosController@insert');
+	Route::post('/proyectos/delete','proyectosController@delete');
+	Route::post('/proyectos/cargarTablasForm', 'proyectosController@cargarTablasForm');
+	//PROYECTOS->ordenesAbiertas
+	Route::get('/proyectos/ordenesAbiertas','proyectosController@ordenesAbiertas');
+	Route::post('/proyectos/ordenAbiertaInsert','proyectosController@ordenAbiertaInsert');
+	Route::post('/proyectos/getProgresoOrdenAbierta','proyectosController@getProgresoOrdenAbierta');
+	Route::post('/proyectos/getProcesosFromProyecto','proyectosController@getProcesosFromProyecto');
+	Route::post('/proyectos/cambiarProceso','proyectosProductosController@cambiarProceso');
+
+	
 	//ACCESORIOS
 	Route::get('/accesorios/show','accesoriosController@show')->name('accesoriosshow');
 	Route::post('/accesorios/insert/','accesoriosController@insertForm');

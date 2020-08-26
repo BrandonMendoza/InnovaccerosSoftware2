@@ -10,15 +10,15 @@ use App\Accesorio;
 
 class materialesClientesController extends Controller
 {
+    public function getMaterialesClientes(Request $request){
+        return response()->json(MaterialCliente::   where('cliente_id', $request->cliente_id)->
+                                                    with(['Material','Material.Tipo_material'])->get());
+    }
+
     public function getMaterialesClientesByCatalogoCliente(Request $request){
         return response()->json(MaterialCliente::   where('catalogo', $request->catalogo)->
                                                     where('cliente_id', $request->cliente_id)->
                                                     with(['Material','Material.Tipo_material','Accesorio'])->get());
-    }
-
-    public function getMaterialesClientes(Request $request){
-        return response()->json(MaterialCliente::   where('cliente_id', $request->cliente_id)->
-                                                    with(['Material','Material.Tipo_material'])->get());
     }
 
     public function getMaterialesAccesoriosClientes(Request $request){
@@ -33,14 +33,7 @@ class materialesClientesController extends Controller
     public function show(){
     	$data['clientes'] = Cliente::All();
         $data['materiales'] = Material::All();
-        //$accesorios = Accesorio::All();
-        //$materiales = Material::All();
-        //$data['materiales'] = collect($materiales)->merge($accesorios);
         $data['materialesClientes'] = MaterialCliente::All();
-        //dd($data);
-
-		
-
 		return view('materialesClientes.show')->with($data);
 	}
 

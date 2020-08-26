@@ -27,13 +27,29 @@
         <!-- Info boxes -->
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
-            <a href="{{route('trashow')}}" class="links">
+            <a href="{{route('proyshow')}}" class="links">
               <div class="info-box" >
                 <span class="info-box-icon bg-lightblue elevation-1"><i class="fas fa-project-diagram"></i> </span>
                 <div class="info-box-content">
                   <span class="info-box-text">Proyectos</span>
                   <span class="info-box-number">
                     <small>Crea y cotiza proyectos para tus clientes</small>
+                  </span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+            </a>
+            <!-- /.info-box -->
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <a href="{{url('/proyectos/ordenesAbiertas')}}" class="links">
+              <div class="info-box" >
+                <span class="info-box-icon bg-lightblue elevation-1"><i class="fas fa-project-diagram"></i> </span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Ordenes Abiertas</span>
+                  <span class="info-box-number">
+                    <small></small>
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -155,8 +171,7 @@
             </a>
           </div>
           <!-- /.col -->
-        </div>
-        <div class="col-12 col-sm-6 col-md-3" >
+          <div class="col-12 col-sm-6 col-md-3" >
             <a href="{{route('matshow')}}" class="links"> 
               <div class="info-box mb-3">
                 <span class="info-box-icon bg-lightblue elevation-1"></span>
@@ -171,7 +186,23 @@
             </a>
           </div>
           <!-- /.col -->
+
+          <div class="col-12 col-sm-6 col-md-3" >
+            <a href="{{route('productosshow')}}" class="links"> 
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-lightblue elevation-1"></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Productos</span>
+                  <span class="info-box-number"><small></small></span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </a>
+          </div>
+          <!-- /.col -->
         </div>
-        <!-- /.row -->
-    </div>
+        
+  </div>
 @stop
